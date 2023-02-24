@@ -2,7 +2,12 @@ import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import { InferGetServerSidePropsType } from 'next'
 
-export async function getServerSideProps(context) {
+//contextを保持するインターフェースの定義
+interface Context {
+    req: any;
+}
+
+export async function getServerSideProps(context: Context) {
   try {
     await clientPromise
     // `await clientPromise` will use the default database passed in the MONGODB_URI
